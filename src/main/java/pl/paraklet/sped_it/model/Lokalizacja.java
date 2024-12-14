@@ -6,12 +6,17 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
+import lombok.ToString;
 import pl.paraklet.sped_it.model.enums.KodPanstwa;
+
+
 
 
 @NoArgsConstructor
 @Getter
 @Setter
+@ToString
 //@AllArgsConstructor
 @Entity
 public class Lokalizacja {

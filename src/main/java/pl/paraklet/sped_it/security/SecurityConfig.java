@@ -23,11 +23,18 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/firma/public").permitAll() // Publiczny dostęp
+                        .requestMatchers("/firma/**").permitAll() // Publiczny dostęp
                         .anyRequest().authenticated()                 // Pozostałe endpointy wymagają autoryzacji
                 )
                 .formLogin()
                 .and()
+                .logout(logout -> logout
+                        .logoutUrl("/logout")              // URL wylogowywania (domyślnie /logout)
+                        .logoutSuccessUrl("/login?logout") // URL przekierowania po wylogowaniu
+                        .deleteCookies("JSESSIONID")      // Usuń ciasteczka (opcjonalne)
+                        .invalidateHttpSession(true)      // Unieważnij sesję
+                        .clearAuthentication(true)        // Wyczyszczenie uwierzytelnienia
+                )
                 .httpBasic();
 
         return http.build();

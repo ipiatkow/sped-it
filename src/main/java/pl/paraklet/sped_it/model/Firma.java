@@ -7,12 +7,12 @@ import jakarta.persistence.Id;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
 import java.util.Collections;
-
 
 
 //@AllArgsConstructor
@@ -55,7 +55,6 @@ public class Firma implements UserDetails {
     public String getUsername() {
         return email; // Spring Security wymaga identyfikatora użytkownika
     }
-
 
 
     @Override

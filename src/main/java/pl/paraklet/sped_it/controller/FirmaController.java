@@ -21,7 +21,8 @@ import java.util.List;
 @RequestMapping("/firma")
 public class FirmaController {
 
-    private final FirmaService firmaService;
+    @Autowired
+    private FirmaService firmaService;
 
     public FirmaController(FirmaService firmaService) {
         this.firmaService = firmaService;

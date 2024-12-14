@@ -2,6 +2,7 @@ package pl.paraklet.sped_it.service;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -9,9 +10,8 @@ import org.springframework.stereotype.Service;
 import pl.paraklet.sped_it.model.Firma;
 import pl.paraklet.sped_it.repository.FirmaRepository;
 
-//@AllArgsConstructor
-//@Getter
-//@Setter
+@Getter
+@Setter
 @Service
 public class FirmaService {
 
