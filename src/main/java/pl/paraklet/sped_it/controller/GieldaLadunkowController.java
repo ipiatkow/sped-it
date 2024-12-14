@@ -8,7 +8,7 @@ import pl.paraklet.sped_it.model.Firma;
 import pl.paraklet.sped_it.model.GieldaLadunkow;
 import pl.paraklet.sped_it.model.enums.KodPanstwa;
 import pl.paraklet.sped_it.model.Lokalizacja;
-import pl.paraklet.sped_it.model.RodzajFirmy;
+import pl.paraklet.sped_it.model.enums.RodzajFirmy;
 import pl.paraklet.sped_it.repository.FirmaRepository;
 import pl.paraklet.sped_it.repository.GieldaLadunkowRepository;
 import pl.paraklet.sped_it.repository.LokalizacjaRepository;

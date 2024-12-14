@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 import pl.paraklet.sped_it.model.*;
 import pl.paraklet.sped_it.model.enums.KodPanstwa;
+import pl.paraklet.sped_it.model.enums.RodzajFirmy;
 import pl.paraklet.sped_it.model.enums.TypPojazdu;
 import pl.paraklet.sped_it.model.enums.Waluta;
 import pl.paraklet.sped_it.repository.LokalizacjaRepository;
@@ -92,33 +93,13 @@ public class GieldaPojazdowController {
             lokalizacjaRepository.save(miejsceRozladunku1);
             miejsceRozladunku.add(miejsceRozladunku1);
         }
-//        Lokalizacja lokalizacjaDest1 = new Lokalizacja(KodPanstwa.DE, "1234567", "Berlin");
-//        Lokalizacja lokalizacjaDest2 = new Lokalizacja(KodPanstwa.DE, "2345678", "Hamburg");
         Lokalizacja miejsceZaladunku = gieldaPojazdowDTO.getMiejsceZaladunku();
         lokalizacjaRepository.save(miejsceZaladunku);
-//
-//        Set<Lokalizacja> miejsceRozladunku = new HashSet<>();
-//        miejsceRozladunku.add(lokalizacjaDest1);
-//        miejsceRozladunku.add(lokalizacjaDest2);
-//        LocalDate dostepnoscOd = LocalDate.of(2024, 11, 3);
-//        LocalDate dostepnoscDo = LocalDate.of(2024, 11, 8);
-//        LocalDate dataZgloszenia = LocalDate.now();
-//        Firma przewoznik = new Firma("Fiver Sp. z o.o.", "irekp@onet.pl", RodzajFirmy.PRZEWOZNIK, "Ireneusz Piątkowski", "501022507");
-//
-//
-//        przewoznikRepository.save(przewoznik);
-//        lokalizacjaRepository.save(miejsceZaladunku);
-//        lokalizacjaRepository.save(lokalizacjaDest1);
-//        lokalizacjaRepository.save(lokalizacjaDest2);
-
         Firma przewoznik;
-
         Optional<Firma> przewoznikDto = przewoznikRepository.findByEmail(gieldaPojazdowDTO.getPrzewoznikEmail());
 
         if (przewoznikDto.isPresent()) {
             przewoznik = przewoznikDto.get();
-
-
             GieldaPojazdow gieldaPojazdow = GieldaPojazdow.builder()
                     .miejsceZaladunku(miejsceZaladunku)
                     .miejsceRozladunku(miejsceRozladunku)
@@ -135,14 +116,9 @@ public class GieldaPojazdowController {
                     .build();
 
             gieldaPojazdowService.dodajDoGielbyPojazdow(gieldaPojazdow);
-
-            System.out.println("Ten rekord dodam do bazy:");
-            System.out.println(gieldaPojazdowDTO);
-
             return "Dodałem rekort do Giełda Pojazdów";
         } else {
             return "Nie ma przewoznika z email: " + gieldaPojazdowDTO.getPrzewoznikEmail();
         }
-
     }
 }

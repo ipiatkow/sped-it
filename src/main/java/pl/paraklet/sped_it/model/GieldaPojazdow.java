@@ -45,5 +45,4 @@ public class GieldaPojazdow {
     private LocalDate dataZgloszenia;
     @OneToOne
     private Firma przewoznik;
-
 }

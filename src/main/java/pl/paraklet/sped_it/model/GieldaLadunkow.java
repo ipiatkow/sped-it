@@ -8,6 +8,7 @@ import jakarta.persistence.OneToOne;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import pl.paraklet.sped_it.model.enums.TypPojazdu;
 
 
 import java.time.LocalDate;

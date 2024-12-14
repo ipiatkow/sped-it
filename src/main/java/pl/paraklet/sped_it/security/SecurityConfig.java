@@ -23,7 +23,7 @@ public class SecurityConfig {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http.csrf().disable()
                 .authorizeHttpRequests(auth -> auth
-                        .requestMatchers("/firma/**").permitAll() // Publiczny dostęp
+                        .requestMatchers("/firma").permitAll() // Publiczny dostęp
                         .anyRequest().authenticated()                 // Pozostałe endpointy wymagają autoryzacji
                 )
                 .formLogin()
