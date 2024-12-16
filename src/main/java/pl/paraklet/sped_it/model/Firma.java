@@ -1,6 +1,7 @@
 package pl.paraklet.sped_it.model;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -25,13 +26,17 @@ public class Firma implements UserDetails {
 
     @Id
     @GeneratedValue
+    @JsonIgnore
     private Long id;
     private String nazwa;
     private String email;
+    @JsonIgnore
     private String nip;
+    @JsonIgnore
     private RodzajFirmy rodzajFirmy;
     private String osobaKontaktowa;
     private String telefon;
+    @JsonIgnore
     private String password;
 
     public Firma(String nazwa, String email, RodzajFirmy rodzajFirmy, String osobaKontaktowa, String telefon) {

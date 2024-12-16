@@ -1,5 +1,6 @@
 package pl.paraklet.sped_it.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
@@ -22,6 +23,7 @@ import pl.paraklet.sped_it.model.enums.KodPanstwa;
 public class Lokalizacja {
     @Id
     @GeneratedValue
+    @JsonIgnore
     private Long id;
     private KodPanstwa kodPanstwa;
     private String kod;
