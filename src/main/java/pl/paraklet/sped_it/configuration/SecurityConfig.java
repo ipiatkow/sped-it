@@ -1,4 +1,4 @@
-package pl.paraklet.sped_it.security;
+package pl.paraklet.sped_it.configuration;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -22,8 +22,8 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         http
-                .cors().disable() // Włączenie obsługi CORS
-                //.and()
+                .cors() // Włączenie obsługi CORS
+                .and()
                 .csrf().disable()
                 .authorizeHttpRequests(auth -> auth
                         .requestMatchers("/firma").permitAll() // Publiczny dostęp
