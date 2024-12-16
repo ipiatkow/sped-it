@@ -26,17 +26,17 @@ public class Firma implements UserDetails {
 
     @Id
     @GeneratedValue
-    @JsonIgnore
+    //@JsonIgnore
     private Long id;
     private String nazwa;
     private String email;
-    @JsonIgnore
+    //@JsonIgnore
     private String nip;
-    @JsonIgnore
+    //@JsonIgnore
     private RodzajFirmy rodzajFirmy;
     private String osobaKontaktowa;
     private String telefon;
-    @JsonIgnore
+    //@JsonIgnore
     private String password;
 
     public Firma(String nazwa, String email, RodzajFirmy rodzajFirmy, String osobaKontaktowa, String telefon) {
