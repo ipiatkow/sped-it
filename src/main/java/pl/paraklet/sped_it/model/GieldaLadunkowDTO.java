@@ -1,8 +1,5 @@
 package pl.paraklet.sped_it.model;
 
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -17,12 +14,8 @@ import java.time.LocalDate;
 @Setter
 public class GieldaLadunkowDTO {
 
-    @Id
-    @GeneratedValue
     private Long id;
-    @ManyToOne
     private Lokalizacja miejsceZaladunku;
-    @ManyToOne
     private Lokalizacja miejsceRozladunku;
     private TypPojazdu typPojazdu;
     private TypPojazdu typPojazdu2;

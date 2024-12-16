@@ -18,9 +18,15 @@ import java.util.Set;
 @Getter
 @Setter
 //@Builder
+@Entity
 public class GieldaLadunkow {
 
+    @Id
+    @GeneratedValue
+    private Long id;
+    @ManyToOne
     private Lokalizacja miejsceZaladunku;
+    @ManyToOne
     private Lokalizacja miejsceRozladunku;
     private TypPojazdu typPojazdu;
     private TypPojazdu typPojazdu2;
