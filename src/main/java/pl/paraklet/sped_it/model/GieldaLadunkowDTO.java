@@ -17,9 +17,10 @@ public class GieldaLadunkowDTO {
     private Long id;
     private Lokalizacja miejsceZaladunku;
     private Lokalizacja miejsceRozladunku;
-    private TypPojazdu typPojazdu;
+    private TypPojazdu typPojazdu1;
     private TypPojazdu typPojazdu2;
     private TypPojazdu typPojazdu3;
+    private float ladownosc;
     private int multifracht = 0;
     private boolean ftl;
     private boolean ltl;

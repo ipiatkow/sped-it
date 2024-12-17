@@ -35,18 +35,18 @@ public class GieldaLadunkowController {
         return gieldaLadunkowRepository.findAll();
     }
 
-    @GetMapping("gieldaladunkowinit")
-    public void dodajPrzykladowyWpis() {
-        Lokalizacja miejsceZaladunku = new Lokalizacja(KodPanstwa.DE, "1234567", "Berlin");
-        Lokalizacja miejsceRozladunku = new Lokalizacja(KodPanstwa.PL, "2345678", "Warszawa");
-        Firma zleceniodawca = new Firma("Fiver", "irek.piatkowski@gmail.com", RodzajFirmy.ZLECENIODAWCA, "Ireneusz Piątkowski", "501022507");
-
-        GieldaLadunkow gieldaLadunkow = new GieldaLadunkow(miejsceZaladunku, miejsceRozladunku, 3, false, true, false, true, true, true, 1700, 30, zleceniodawca);
-        lokalizacjaRepository.save(miejsceRozladunku);
-        lokalizacjaRepository.save(miejsceZaladunku);
-        firmaRepository.save(zleceniodawca);
-        gieldaLadunkowRepository.save(gieldaLadunkow);
-    }
+//    @GetMapping("gieldaladunkowinit")
+//    public void dodajPrzykladowyWpis() {
+//        Lokalizacja miejsceZaladunku = new Lokalizacja(KodPanstwa.DE, "1234567", "Berlin");
+//        Lokalizacja miejsceRozladunku = new Lokalizacja(KodPanstwa.PL, "2345678", "Warszawa");
+//        Firma zleceniodawca = new Firma("Fiver", "irek.piatkowski@gmail.com", RodzajFirmy.ZLECENIODAWCA, "Ireneusz Piątkowski", "501022507");
+//
+//        GieldaLadunkow gieldaLadunkow = new GieldaLadunkow(miejsceZaladunku, miejsceRozladunku, 3, false, true, false, true, true, true, 1700, 30, zleceniodawca);
+//        lokalizacjaRepository.save(miejsceRozladunku);
+//        lokalizacjaRepository.save(miejsceZaladunku);
+//        firmaRepository.save(zleceniodawca);
+//        gieldaLadunkowRepository.save(gieldaLadunkow);
+//    }
 
     @PostMapping("gieldaladunkow")
     public String dodajDoGieldyLadunkow(@RequestBody GieldaLadunkowDTO nowyLadunek) {
@@ -57,8 +57,13 @@ public class GieldaLadunkowController {
             //Firma zleceniodawca = new Firma("Fiver", "irek.piatkowski@gmail.com", RodzajFirmy.ZLECENIODAWCA, "Ireneusz Piątkowski", "501022507");
 
             GieldaLadunkow gieldaLadunkow = new GieldaLadunkow(
+                    nowyLadunek.getId(),
                     nowyLadunek.getMiejsceZaladunku(),
                     nowyLadunek.getMiejsceRozladunku(),
+                    nowyLadunek.getTypPojazdu1(),
+                    nowyLadunek.getTypPojazdu2(),
+                    nowyLadunek.getTypPojazdu3(),
+                    nowyLadunek.getLadownosc(),
                     nowyLadunek.getMultifracht(),
                     nowyLadunek.isFtl(),
                     nowyLadunek.isLtl(),
@@ -68,6 +73,7 @@ public class GieldaLadunkowController {
                     nowyLadunek.isZPrzyczepa(),
                     nowyLadunek.getCenaPublikacji(),
                     nowyLadunek.getTerminPlatnosci(),
+                    nowyLadunek.getDataPublikacji(),
                     zleceniodawca.get());
             lokalizacjaRepository.save(miejsceRozladunku);
             lokalizacjaRepository.save(miejsceZaladunku);
