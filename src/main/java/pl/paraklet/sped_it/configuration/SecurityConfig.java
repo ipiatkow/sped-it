@@ -29,7 +29,9 @@ public class SecurityConfig {
                         .requestMatchers("/firma").permitAll() // Publiczny dostęp
                         .anyRequest().authenticated()                 // Pozostałe endpointy wymagają autoryzacji
                 )
-                .formLogin()
+                .formLogin(formLogin -> formLogin
+                        .loginPage("/login") // Twój endpoint do logowania
+                        .defaultSuccessUrl("https://sped-it-front-00850f6f4d51.herokuapp.com", true) // Przekierowanie po zalogowaniu)
                 .and()
                 .logout(logout -> logout
                         .logoutUrl("/logout")              // URL wylogowywania (domyślnie /logout)
@@ -37,6 +39,7 @@ public class SecurityConfig {
                         .deleteCookies("JSESSIONID")      // Usuń ciasteczka (opcjonalne)
                         .invalidateHttpSession(true)      // Unieważnij sesję
                         .clearAuthentication(true)        // Wyczyszczenie uwierzytelnienia
+                        .logoutSuccessUrl("https://sped-it-front-00850f6f4d51.herokuapp.com")
                 )
                 .httpBasic();
 
