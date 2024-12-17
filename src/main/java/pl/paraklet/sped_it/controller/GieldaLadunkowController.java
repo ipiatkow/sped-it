@@ -12,10 +12,12 @@ import pl.paraklet.sped_it.model.GieldaLadunkowDTO;
 import pl.paraklet.sped_it.model.enums.KodPanstwa;
 import pl.paraklet.sped_it.model.Lokalizacja;
 import pl.paraklet.sped_it.model.enums.RodzajFirmy;
+import pl.paraklet.sped_it.model.enums.TypPojazdu;
 import pl.paraklet.sped_it.repository.FirmaRepository;
 import pl.paraklet.sped_it.repository.GieldaLadunkowRepository;
 import pl.paraklet.sped_it.repository.LokalizacjaRepository;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 
@@ -35,18 +37,18 @@ public class GieldaLadunkowController {
         return gieldaLadunkowRepository.findAll();
     }
 
-//    @GetMapping("gieldaladunkowinit")
-//    public void dodajPrzykladowyWpis() {
-//        Lokalizacja miejsceZaladunku = new Lokalizacja(KodPanstwa.DE, "1234567", "Berlin");
-//        Lokalizacja miejsceRozladunku = new Lokalizacja(KodPanstwa.PL, "2345678", "Warszawa");
-//        Firma zleceniodawca = new Firma("Fiver", "irek.piatkowski@gmail.com", RodzajFirmy.ZLECENIODAWCA, "Ireneusz Piątkowski", "501022507");
-//
-//        GieldaLadunkow gieldaLadunkow = new GieldaLadunkow(miejsceZaladunku, miejsceRozladunku, 3, false, true, false, true, true, true, 1700, 30, zleceniodawca);
-//        lokalizacjaRepository.save(miejsceRozladunku);
-//        lokalizacjaRepository.save(miejsceZaladunku);
-//        firmaRepository.save(zleceniodawca);
-//        gieldaLadunkowRepository.save(gieldaLadunkow);
-//    }
+    @GetMapping("gieldaladunkowinit")
+    public void dodajPrzykladowyWpis() {
+        Lokalizacja miejsceZaladunku = new Lokalizacja(KodPanstwa.DE, "1234567", "Berlin");
+        Lokalizacja miejsceRozladunku = new Lokalizacja(KodPanstwa.PL, "2345678", "Warszawa");
+        Firma zleceniodawca = new Firma("Fiver", "irek.piatkowski@gmail.com", RodzajFirmy.ZLECENIODAWCA, "Ireneusz Piątkowski", "501022507");
+
+        GieldaLadunkow gieldaLadunkow = new GieldaLadunkow(0l, miejsceZaladunku, miejsceRozladunku, TypPojazdu.CHŁODNIA, null, null, 24, 3, false, true, false, true, true, true, 1700, 30, LocalDate.now(), zleceniodawca);
+        lokalizacjaRepository.save(miejsceRozladunku);
+        lokalizacjaRepository.save(miejsceZaladunku);
+        firmaRepository.save(zleceniodawca);
+        gieldaLadunkowRepository.save(gieldaLadunkow);
+    }
 
     @PostMapping("gieldaladunkow")
     public String dodajDoGieldyLadunkow(@RequestBody GieldaLadunkowDTO nowyLadunek) {
